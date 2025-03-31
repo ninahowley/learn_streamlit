@@ -107,25 +107,7 @@ if show:
 #-----------------------------------------
 st.title("🔐 8. st.secrets")
 
-password = st.secrets
-st.write(password)
-
-#-----------------------------------------
-#File uploader
-#-----------------------------------------
-st.title("📂 9. st.file_uploader()")
-
-file = st.file_uploader("Choose a CSV file")
-
-if file is None:
-    st.warning("Please upload a file")
-
-df2 = pd.read_csv(file)
-
-columns = st.multiselect("Choose columns to preview", df2.columns)
-preview = st.toggle("Data preview")
-if preview:
-    st.write(df2[columns])
+st.write("I dont know.. its a secret")
 
 #-----------------------------------------
 #Layout
@@ -138,11 +120,6 @@ st.write(f"Your number is **{num}**!!!")
 
 with st.sidebar:
     st.header("Wassup")
-
-num = st.slider("Biggest number to show from your file?", -2.5, 2.5, step=0.25)
-with st.expander("Selected data preview"):
-    st.write("My CSV file")
-    st.write(df2[df2 < num])
 
 #-----------------------------------------
 #Progress
@@ -204,3 +181,27 @@ st.title("🪼🐊 Thats the end!!")
 st.subheader("Goodbye... 🙋‍♀️")
 st.write("Thank you to this youtube guy:")
 st.write("https://www.youtube.com/watch?v=ydWjwxQ8fVE")
+
+#-----------------------------------------
+#File uploader
+#-----------------------------------------
+st.title("📂 9. st.file_uploader()")
+
+st.write("Put at the end so it doesn't interrupt")
+
+file = st.file_uploader("Choose a CSV file")
+
+if file is None:
+    st.warning("Please upload a CSV file")
+    st.stop()
+
+df2 = pd.read_csv(file)
+columns = st.multiselect("Choose columns to preview", df2.columns)
+preview = st.toggle("Data preview")
+if preview:
+    st.write(df2[columns])
+
+num = st.slider("Biggest number to show from your file?", -2.5, 2.5, step=0.25)
+with st.expander("Selected data preview"):
+    st.write("My CSV file")
+    st.write(df2[df2 < num])
