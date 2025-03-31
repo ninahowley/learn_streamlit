@@ -119,7 +119,6 @@ file = st.file_uploader("Choose a CSV file")
 
 if file is None:
     st.warning("Please upload a file")
-    st.stop()
 
 df2 = pd.read_csv(file)
 
